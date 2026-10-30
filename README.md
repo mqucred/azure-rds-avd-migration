@@ -29,7 +29,7 @@ Built primarily with **PowerShell**, **Azure CLI**, **Bicep** and **Git Bash**.
 | **[11](docs/11-entra-only-AVD-FSLogix-cutover/README.md)** | entra-only-AVD-FSLogix-cutover | **Done** | `0x801c002d` `FrxStatus: 31` `Error: 1265 — ERROR_TRUST_FAILURE` `Error: 90008` |
 | **[12](docs/12-application-&-cloud-native-runtime-validation/README.md)** | application-&-cloud-native-runtime-validation | **Done** | `Failed to retrieve access keys for storage accounts. Cannot proceed with AAD app attach workflow..`        `401`  (toast) → real underlying cause `403 AuthorizationFailure` (DevTools Network tab) `Owner is not an ObjectId or UPN` `400` not in JSON format |
 | **[13](docs/13-domain-controller-OFF-test/README.md)** | domain-controller-OFF-test | **Done** | `0xc000006d` `0xc0000022` `Virtual Machine User Login` RBAC role, `ErrorCode 5`, `ErrorCode 13`, `ValidateRegistryImportFile failed` `FrxStatus: 31` |
-| **[14](docs/14-ad-retirement-&-final-cloud-native-validation/phase14-readme.md)** | ad-retirement-&-final-cloud-native-validation | **Done** | `0xc0000022 (STATUS_ACCESS_DENIED)` `120013` |
+| **[14](docs/14-ad-retirement-&-final-cloud-native-validation/README.md)** | ad-retirement-&-final-cloud-native-validation | **Done** | `0xc0000022 (STATUS_ACCESS_DENIED)` `120013` |
 | **[15](docs/phase-15-troubleshooting/README.md)** | troubleshooting-&-cost-governance | **Done** | 	Full Issue log, #1–#14 |
 
 
