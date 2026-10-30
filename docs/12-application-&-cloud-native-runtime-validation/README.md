@@ -48,7 +48,7 @@ Failed to retrieve access keys for storage accounts. Cannot proceed with AAD app
 ### Current best-documented root cause (unconfirmed by Microsoft)
 Per MS Learn (`app-attach-overview`, Azure Files section): *"VHDX or CimFS disk images are mounted using the **computer account of the session host**."* This means the expand/mount step authenticates as the host's own Entra **device/computer object** — not the AVD SPs (already correctly scoped), not the admin, not a user's PRT. Granting this (device object added to `GRP-CN-AVD-HOSTS`, group granted Storage File Data SMB Share Reader) did **not** resolve it — so either the correct permission/role for the device identity is different, or there's a separate platform-level gap on Entra-only pools.
 
-### Status: **[Opened MS support Case](../evidence/MSFT%20support%20case%20full%20draft.md)**
+### Status:  Microsoft Q&A [LINK](https://learn.microsoft.com/en-us/answers/questions/6055930/app-attach-import-fails-with-failed-to-retrieve-ac)
 
 **Decision:** documented as a known limitation. Not blocking Phase 13/14.
 
