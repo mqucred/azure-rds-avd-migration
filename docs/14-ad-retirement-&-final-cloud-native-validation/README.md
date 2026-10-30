@@ -129,7 +129,7 @@ Incident #12: `New` (03:37:20 UTC) → `Closed / FalsePositive` (03:37:38 UTC) �
 
 - [x] ![dsregcmd /status, klist, DNS/ping/nltest output — avduser01,](../images/phase-14/1.png)
 
-- [x] ![Graph API , CLI password-reset error 120013 — avduser02](../)
+- [x] ![Graph API , CLI password-reset error 120013 — avduser02](../images/phase-14/2.png)
 
 - [x] ![azureFilesIdentityBasedAuthentication output — stavdfslogixcn01](../images/phase-14/3.png)
                                     
