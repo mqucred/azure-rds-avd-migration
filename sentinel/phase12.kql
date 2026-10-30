@@ -1,0 +1,55 @@
+// ============================================================
+// Phase 12 — KQL queries used for Sentinel/SOAR revalidation
+// Workspace: law-avd-secops-001
+// ============================================================
+
+// --- 1. Raw check: confirm 50126 (failed sign-in) events are landing for cloud-only users ---
+SigninLogs
+| where TimeGenerated > ago(1h)
+| where UserPrincipalName =~ "cnuser01@anandamqucgmail.onmicrosoft.com"
+    or UserPrincipalName =~ "cnuser02@anandamqucgmail.onmicrosoft.com"
+| where ResultType == 50126
+| project TimeGenerated, UserPrincipalName, ResultType, ResultDescription
+| order by TimeGenerated asc
+
+
+// --- 2. EXACT deployed analytics rule query (pulled live from the rule definition via ARM API) ---
+// Rule: DET-AVD-Repeated-Failed-SignIns (af9a201c-7b3a-40ba-b9d4-9bc9b96f6524)
+// Frequency: every 5 min | Threshold: FailedAttempts >= 3 within a 10-min window
+SigninLogs
+| where TimeGenerated > ago(10m)
+| where ResultType == 50126
+| summarize FailedAttempts=count(), FirstSeen=min(TimeGenerated), LastSeen=max(TimeGenerated) by UserPrincipalName
+| where FailedAttempts >= 3
+| where LastSeen - FirstSeen <= 10m
+| project TimeGenerated=LastSeen, UserPrincipalName, FailedAttempts, FirstSeen, LastSeen
+
+// NOTE: this query is a ROLLING 10-minute lookback from "now" — if your test
+// sign-ins are older than 10 minutes when you run this, it will correctly
+// return zero rows even though the events exist. Check SigninLogs directly
+// (query 1) first if this comes back empty.
+
+
+// --- 3. Confirm incident creation + status progression (Sentinel-native numbering) ---
+// NOTE: Defender portal (security.microsoft.com/incidents/N) uses a DIFFERENT
+// numbering scheme than this table's IncidentNumber for the same incident.
+SecurityIncident
+| where TimeGenerated > ago(1d)
+| project IncidentNumber, Title, Status, Classification, ClassificationReason, Labels, LastModifiedTime
+| order by LastModifiedTime desc
+
+
+// --- 4. Check a specific incident's final state (close + classification + tags) ---
+SecurityIncident
+| where IncidentNumber == 10   // substitute the actual incident number
+| project IncidentNumber, Title, Status, Classification, ClassificationReason, Labels, LastModifiedTime
+| order by LastModifiedTime desc
+| take 1
+
+
+// --- 5. Full audit trail: every status change for incidents from this detection rule ---
+SecurityIncident
+| where TimeGenerated > ago(1d)
+| where Title == "DET-AVD-Repeated-Failed-SignIns"
+| project IncidentNumber, Status, Classification, Labels, LastModifiedTime
+| order by IncidentNumber asc, LastModifiedTime asc
