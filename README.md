@@ -1,4 +1,4 @@
-# azure-avd-rds-migration
+# azure-rds-avd-migration
 
 > **RDS → Hybrid Azure Virtual Desktop → Cloud-Native AVD Identity Modernization Lab**
 
