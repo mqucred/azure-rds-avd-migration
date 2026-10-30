@@ -14,16 +14,15 @@ Built primarily with **PowerShell**, **Azure CLI**, **Bicep** and **Git Bash**.
 ---
 ## Implementation Phases
 
-| Phase | Topic | Status | Codes/Notes |
+| Phase | Topic | Status | Error Codes |
 |---|---|---|---|
-| **[01](docs/phase-1-onprem-rds-baseline/README.md)** | **onprem-rds-baseline** | **Done** | `HTTP 403.SSL` `0x3` `DCPromo.General.77`  |
+| **[01](docs/phase-1-onprem-rds-baseline/README.md)** | **onprem-rds-baseline** | **Done** | `HTTP 403.SSL` `Use .ps1`  |
 | **[02](docs/phase-2-landingzone-networking/README.md)** | **landingzone-networking** | **Done** | `443` `deny` `allow`  |
-| **[03](docs/phase-3-hybrid-identity/README.md)** | **hybrid-identity** | **Done** |     `SCP` `device options` `80230405`  |
-| **[04](docs/phase-4-azure-files-fslogix/README.md)** | **azure-Files-FSLogix** | **Done** | `SMB 445` `ACL/RBAC` `Firewall deny/allow` `System Error 5`  |
-| **[05](docs/phase-5-avd-hostpool/README.md)** | **avd-hostpool** | **Done** | `Geneva` needs `assistance` `HTTP 401`, `Failed(3) code 2` `404`   |
+| **[03](docs/phase-3-hybrid-identity/README.md)** | **hybrid-identity** | **Done** |     `SCP` `device options`  |
+| **[04](docs/phase-4-azure-files-fslogix/README.md)** | **azure-Files-FSLogix** | **Done** | `SMB 445` `ACL/RBAC` `Firewall deny/allow` |
+| **[05](docs/phase-5-avd-hostpool/README.md)** | **avd-hostpool** | **Done** | `Geneva` needs `assistance`   |
 | **[06](docs/phase-6-migration-cutover/README.md)** | **migration-cutover** | **Done** | `0x00000001` (*Incorrect function*); `409` `AVD mslearn best practices` `dcregcmd` |
 | **[07](docs/phase-7-msix-app-attach/README.md)** | **msix-app-attach** | **Done** | CIM `0x80070057` (*Invalid parameter*) `298`; `.VHDX fallback validated` `klist` `Restart-Service RDAgent & RDAgentBootloader` `path denied` `NTUSER.DAT` `RDP Properties edits in Session host on Azure portal` `Test-Path` `$LASTEXITCODE` `Domain Policy vs DC in gpmc.msc` |
-<<<<<<< HEAD
 | **[08](docs/phase-8-p2-secops-governance/README.md)** | **p2-secops-governance** | **Done** | `MFA` `50126` `scheduled query rule invalid` ARM/API `401` / `400` issues investigated |
 | **[09](docs/9-cloud-native-identity-&-dependency-preflight/README.md)** | cloud-native-identity-&-dependency-preflight | **Done** | `403` `Property "AzureFilesIdentityBasedAuthentication" cannot be found` |
 | **[10](docs/10-azure-files-entra-kerberos-migration/README.md)** | azure-files-entra-kerberos-migration | **Done** | `Update-AzStorageAccount' is not recognized....` `New-AzRoleAssignment: Operation returned an invalid status code 'ServiceUnavailable`  |
@@ -32,16 +31,6 @@ Built primarily with **PowerShell**, **Azure CLI**, **Bicep** and **Git Bash**.
 | **[13](docs/13-domain-controller-OFF-test/README.md)** | domain-controller-OFF-test | **Done** | `0xc000006d` `0xc0000022` `Virtual Machine User Login` RBAC role, `ErrorCode 5`, `ErrorCode 13`, `ValidateRegistryImportFile failed` `FrxStatus: 31` |
 | **[14](docs/14-ad-retirement-&-final-cloud-native-validation/phase14-readme.md)** | ad-retirement-&-final-cloud-native-validation | **Done** | `0xc0000022 (STATUS_ACCESS_DENIED)` `120013` |
 | **[15](docs/phase-15-troubleshooting/README.md)** | troubleshooting-&-cost-governance | **Done** | 	Full Issue log, #1–#14 |
-=======
-| **[08](docs/phase-8-p2-secops-governance/README.md)** | **p2-secops-governance** | **Done** | `MFA` `50126` `50089` `scheduled query rule invalid` ARM/API `401` / `400` issues investigated |
-| **09** | cloud-native-identity-&-dependency-preflight | *Planned* | Part 2 — Cloud-Native Modernization |
-| **10** | azure-files-entra-kerberos-migration | *Planned* | Part 2 — Cloud-Native Modernization |
-| **11** | entra-only-AVD-FSLogix-cutover | *Planned* | Part 2 — Cloud-Native Modernization |
-| **12** | application-&-cloud-native-runtime-validation | *Planned* | Part 2 — Cloud-Native Modernization |
-| **13** | domain-controller-OFF-test | *Planned* | Part 2 — Cloud-Native Modernization |
-| **14** | ad-retirement-&-final-cloud-native-validation | *Planned* | Part 2 — Cloud-Native Modernization |
-| **[15](docs/phase-15-troubleshooting/README.md)** | troubleshooting-&-cost-governance | *Planned* | Part 1 `DONE` Part 2 `WIP` |
->>>>>>> 0421d10ae9c21707c02d268ad0d48df3ea136c8a
 
 
 ## Key Engineering Investigations
